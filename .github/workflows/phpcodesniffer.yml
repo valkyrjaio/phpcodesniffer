@@ -1,0 +1,29 @@
+name: PHP Code Sniffer
+
+on:
+  push:
+    branches: [ 'master', '*.x' ]
+  pull_request:
+    branches: [ 'master', '*.x' ]
+
+jobs:
+  phpcodesniffer:
+    name: PHP Code Sniffer
+    uses: ./.github/workflows/_workflow-call.yml
+    permissions:
+      pull-requests: write
+      contents: read
+    with:
+      php-version: '8.4'
+      paths: |
+        ci:
+          - '.github/ci/phpcodesniffer/**'
+          - '.github/workflows/phpcodesniffer.yml'
+          - '.github/workflows/_workflow-call.yml'
+        files:
+          - '.github/ci/phpcodesniffer/**'
+          - '.github/workflows/phpcodesniffer.yml'
+          - '.github/workflows/_workflow-call.yml'
+          - 'src/**/*.php'
+          - 'tests/**/*.php'
+          - 'composer.json'

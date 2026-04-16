@@ -1,0 +1,20 @@
+{
+  "require"           : {
+    "php" : ">=8.4"
+  },
+  "require-dev"       : {
+    "squizlabs/php_codesniffer" : "^4.0.1",
+    "slevomat/coding-standard"  : "^8.28.1"
+  },
+  "scripts"           : {
+    "check"    : "vendor/bin/phpcs --standard=./ruleset.xml ../../../tests -n -s",
+    "warnings" : "vendor/bin/phpcs --standard=./ruleset.xml ../../../tests -s"
+  },
+  "minimum-stability" : "dev",
+  "prefer-stable"     : true,
+  "config"            : {
+    "allow-plugins" : {
+      "dealerdirect/phpcodesniffer-composer-installer" : true
+    }
+  }
+}
