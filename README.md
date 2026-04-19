@@ -4,81 +4,43 @@
 
 # Valkyrja PHP Code Sniffer
 
-PHP Code Sniffer rules for the Valkyrja project.
+Shared PHP Code Sniffer configuration for Valkyrja PHP projects — ruleset
+and reusable workflow that enforce the project's file-naming and namespace
+conventions across consuming repositories.
 
 <p>
     <a href="https://packagist.org/packages/valkyrja/phpcodesniffer"><img src="https://poser.pugx.org/valkyrja/phpcodesniffer/require/php" alt="PHP Version Require"></a>
     <a href="https://packagist.org/packages/valkyrja/phpcodesniffer"><img src="https://poser.pugx.org/valkyrja/phpcodesniffer/v" alt="Latest Stable Version"></a>
     <a href="https://packagist.org/packages/valkyrja/phpcodesniffer"><img src="https://poser.pugx.org/valkyrja/phpcodesniffer/license" alt="License"></a>
-    <!-- <a href="https://packagist.org/packages/valkyrja/phpcodesniffer"><img src="https://poser.pugx.org/valkyrja/phpcodesniffer/downloads" alt="Total Downloads"></a>-->
-    <a href="https://scrutinizer-ci.com/g/valkyrjaio/phpcodesniffer/?branch=26.x"><img src="https://scrutinizer-ci.com/g/valkyrjaio/phpcodesniffer/badges/quality-score.png?b=26.x" alt="Scrutinizer"></a>
-    <a href="https://coveralls.io/github/valkyrjaio/phpcodesniffer?branch=26.x"><img src="https://coveralls.io/repos/github/valkyrjaio/phpcodesniffer/badge.svg?branch=26.x" alt="Coverage Status" /></a>
-    <a href="https://shepherd.dev/github/valkyrjaio/phpcodesniffer"><img src="https://shepherd.dev/github/valkyrjaio/phpcodesniffer/coverage.svg" alt="Psalm Shepherd" /></a>
+    <a href="https://github.com/valkyrjaio/ci-phpcodesniffer-php/actions/workflows/ci.yml?query=branch%3A26.x"><img src="https://github.com/valkyrjaio/ci-phpcodesniffer-php/actions/workflows/ci.yml/badge.svg?branch=26.x" alt="CI Status"></a>
+    <a href="https://scrutinizer-ci.com/g/valkyrjaio/ci-phpcodesniffer-php/?branch=26.x"><img src="https://scrutinizer-ci.com/g/valkyrjaio/ci-phpcodesniffer-php/badges/quality-score.png?b=26.x" alt="Scrutinizer"></a>
+    <a href="https://coveralls.io/github/valkyrjaio/ci-phpcodesniffer-php?branch=26.x"><img src="https://coveralls.io/repos/github/valkyrjaio/ci-phpcodesniffer-php/badge.svg?branch=26.x" alt="Coverage Status" /></a>
+    <a href="https://shepherd.dev/github/valkyrjaio/ci-phpcodesniffer-php"><img src="https://shepherd.dev/github/valkyrjaio/ci-phpcodesniffer-php/coverage.svg" alt="Psalm Shepherd" /></a>
     <a href="https://sonarcloud.io/summary/new_code?id=valkyrjaio_phpcodesniffer"><img src="https://sonarcloud.io/api/project_badges/measure?project=valkyrjaio_phpcodesniffer&metric=sqale_rating" alt="Maintainability Rating" /></a>
 </p>
 
-Build Status
-------------
+Usage
+-----
 
-<table>
-    <tbody>
-        <tr>
-            <td>Linting</td>
-            <td>
-                <a href="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/phpcodesniffer.yml?query=branch%3A26.x"><img src="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/phpcodesniffer.yml/badge.svg?branch=26.x" alt="PHP Code Sniffer Build Status"></a>
-            </td>
-            <td>
-                <a href="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/phpcsfixer.yml?query=branch%3A26.x"><img src="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/phpcsfixer.yml/badge.svg?branch=26.x" alt="PHP CS Fixer Build Status"></a>
-            </td>
-        </tr>
-        <tr>
-            <td>Coding Rules</td>
-            <td>
-                <a href="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/phparkitect.yml?query=branch%3A26.x"><img src="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/phparkitect.yml/badge.svg?branch=26.x" alt="PHPArkitect Build Status"></a>
-            </td>
-            <td>
-                <a href="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/rector.yml?query=branch%3A26.x"><img src="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/rector.yml/badge.svg?branch=26.x" alt="Rector Build Status"></a>
-            </td>
-        </tr>
-        <tr>
-            <td>Static Analysis</td>
-            <td>
-                <a href="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/phpstan.yml?query=branch%3A26.x"><img src="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/phpstan.yml/badge.svg?branch=26.x" alt="PHPStan Build Status"></a>
-            </td>
-            <td>
-                <a href="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/psalm.yml?query=branch%3A26.x"><img src="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/psalm.yml/badge.svg?branch=26.x" alt="Psalm Build Status"></a>
-            </td>
-        </tr>
-        <tr>
-            <td>Testing</td>
-            <td>
-                <a href="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/phpunit.yml?query=branch%3A26.x"><img src="https://github.com/valkyrjaio/phpcodesniffer/actions/workflows/phpunit.yml/badge.svg?branch=26.x" alt="PHPUnit Build Status"></a>
-            </td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
+The ruleset is defined in `.github/ci/phpcodesniffer/ruleset.xml` and run
+via the `phpcodesniffer` Composer script:
 
-## Usage
-
-The ruleset is defined in `.github/ci/phpcodesniffer/ruleset.xml` and run via
-the `phpcodesniffer` Composer script:
-
-```bash
+```
 composer phpcodesniffer
 ```
 
-This runs `phpcs` against `src/` and `tests/` using the project ruleset. The
-`src/` run suppresses warnings (`-n`); the `tests/` run additionally shows
-sniff source codes (`-n -s`).
+This runs `phpcs` against `src/` and `tests/` using the project ruleset.
+The `src/` run suppresses warnings (`-n`); the `tests/` run additionally
+shows sniff source codes (`-n -s`).
 
-To see all warnings (not just errors) run:
+To see all warnings (not just errors), run:
 
-```bash
+```
 cd .github/ci/phpcodesniffer && composer warnings
 ```
 
-## Ruleset
+Ruleset
+-------
 
 ### Excluded Paths
 
@@ -99,8 +61,8 @@ The following paths are excluded from all checks:
 
 #### `SlevomatCodingStandard.Files.TypeNameMatchesFileName`
 
-Enforces that each type (class, interface, trait, enum) is declared in a file
-whose name matches the type name, rooted at the configured namespaces:
+Enforces that each type (class, interface, trait, enum) is declared in a
+file whose name matches the type name, rooted at the configured namespaces:
 
 | Root path      | Namespace        |
 |----------------|------------------|
@@ -122,11 +84,12 @@ are not permitted inline:
 | `allowFullyQualifiedNameForCollidingClasses` | `false` | Colliding class names must be aliased, not referenced fully qualified   |
 | `searchAnnotations`                          | `true`  | Annotations in docblocks are also checked for unimported names          |
 
-## Workflows
+Workflows
+---------
 
 The [`_workflow-call.yml`](.github/workflows/_workflow-call.yml) reusable
-workflow runs PHP Code Sniffer against the calling repository's source. It is
-designed to be called from other repositories via `workflow_call`.
+workflow runs PHP Code Sniffer against the calling repository's source. It
+is designed to be called from other repositories via `workflow_call`.
 
 ### Inputs
 
@@ -144,7 +107,7 @@ designed to be called from other repositories via `workflow_call`.
 ```yaml
 jobs:
   phpcodesniffer:
-    uses: valkyrjaio/phpcodesniffer/.github/workflows/_workflow-call.yml@26.x
+    uses: valkyrjaio/ci-phpcodesniffer-php/.github/workflows/_workflow-call.yml@26.x
     permissions:
       pull-requests: write
       contents: read
@@ -164,3 +127,29 @@ jobs:
 
 `secrets: inherit` is required to pass the `VALKYRJA_GHA_APP_ID` and
 `VALKYRJA_GHA_PRIVATE_KEY` org secrets used for PR comments.
+
+Contributing
+------------
+
+See [`CONTRIBUTING.md`][contributing url] for the submission process and
+[`VOCABULARY.md`][vocabulary url] for the terminology used across Valkyrja.
+
+Security Issues
+---------------
+
+If you discover a security vulnerability, please follow our
+[disclosure procedure][security vulnerabilities url].
+
+License
+-------
+
+Licensed under the [MIT license][MIT license url]. See
+[`LICENSE.md`](./LICENSE.md).
+
+[contributing url]: https://github.com/valkyrjaio/.github/blob/master/CONTRIBUTING.md
+
+[vocabulary url]: https://github.com/valkyrjaio/.github/blob/master/VOCABULARY.md
+
+[security vulnerabilities url]: https://github.com/valkyrjaio/.github/blob/master/SECURITY.md
+
+[MIT license url]: https://opensource.org/licenses/MIT
